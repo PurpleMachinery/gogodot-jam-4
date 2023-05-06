@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs5jnowgjxae8"]
+[gd_scene load_steps=3 format=3 uid="uid://cs5jnowgjxae8"]
 
+[ext_resource type="Script" path="res://src/main/ChessPieces/King.gd" id="1_4iy6q"]
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_f2xlb"]
 
 [node name="King" type="Node2D"]
+script = ExtResource("1_4iy6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f2xlb")
