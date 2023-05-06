@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgmjcd1vsmy30"]
+
+[ext_resource type="Texture2D" uid="uid://n3cwpbxnsmon" path="res://src/resources/pixel chess_v1.2/16x16 pieces/BlackPieces.png" id="1_ou6ii"]
+
+[node name="Pawn" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ou6ii")
+hframes = 6
+frame = 5
