@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cs5jnowgjxae8"]
 
-[ext_resource type="Texture2D" uid="uid://n3cwpbxnsmon" path="res://src/resources/pixel chess_v1.2/16x16 pieces/BlackPieces.png" id="1_p0h7o"]
+[ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_f2xlb"]
 
 [node name="King" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_p0h7o")
+texture = ExtResource("1_f2xlb")
 hframes = 6
 frame = 4

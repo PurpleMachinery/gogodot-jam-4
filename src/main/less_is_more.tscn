@@ -1,7 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5lvx2es56w00"]
+[gd_scene load_steps=7 format=3 uid="uid://b5lvx2es56w00"]
 
+[ext_resource type="Script" path="res://src/main/less_is_more.gd" id="1_7wh4d"]
+[ext_resource type="PackedScene" uid="uid://rsoxmtvejvbp" path="res://src/main/Board/Board.tscn" id="1_m2et5"]
 [ext_resource type="PackedScene" uid="uid://bpclaqq0xjrc4" path="res://src/main/ChessPieces/Pawn.tscn" id="1_tn6ov"]
+[ext_resource type="Texture2D" uid="uid://bnhu42ebgi4v7" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/dice_skull.png" id="2_uonyo"]
+[ext_resource type="PackedScene" uid="uid://cs5jnowgjxae8" path="res://src/main/ChessPieces/King.tscn" id="3_rtjws"]
+
+[sub_resource type="Curve2D" id="Curve2D_ivylx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -56, -56, 0, 0, 0, 0, -56, -40, 0, 0, 0, 0, 40, -40, 0, 0, 0, 0, 40, -8, 0, 0, 0, 0, -24, -8, 0, 0, 0, 0, -24, 24, 0, 0, 0, 0, 8, 24, 0, 0, 0, 0, 8, 40, 0, 0, 0, 0, 8, 56)
+}
+point_count = 9
 
 [node name="LessIsMore" type="Node2D"]
+script = ExtResource("1_7wh4d")
 
-[node name="Pawn" parent="." instance=ExtResource("1_tn6ov")]
+[node name="Board" parent="." instance=ExtResource("1_m2et5")]
+modulate = Color(0.670588, 0.372549, 0.721569, 1)
+
+[node name="EnemyPath" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="EnemyPath"]
+position = Vector2(-56, -64)
+points = PackedVector2Array(0, 12, 0, 24, 16, 24, 32, 24, 48, 24, 64, 24, 80, 24, 96, 24, 96, 40, 96, 56, 80, 56, 64, 56, 48, 56, 32, 56, 32, 72, 32, 88, 48, 88, 64, 88, 64, 104, 64, 120)
+width = 2.0
+texture_mode = 2
+joint_mode = 2
+antialiased = true
+
+[node name="Start" type="Sprite2D" parent="EnemyPath/Line2D"]
+position = Vector2(0, 8)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_uonyo")
+
+[node name="Path2D" type="Path2D" parent="EnemyPath"]
+visible = false
+curve = SubResource("Curve2D_ivylx")
+
+[node name="PlayerPieces" type="Node2D" parent="."]
+
+[node name="King" parent="PlayerPieces" instance=ExtResource("3_rtjws")]
+position = Vector2(8, 56)
+
+[node name="EnemyPieces" type="Node2D" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+
+[node name="Pawn" parent="EnemyPieces" instance=ExtResource("1_tn6ov")]
+position = Vector2(-56, -56)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(52, 0)
+zoom = Vector2(4.8, 4.8)
