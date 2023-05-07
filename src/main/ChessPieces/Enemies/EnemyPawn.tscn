@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpumn3tfdlrqp"]
+
+[ext_resource type="Script" path="res://src/main/ChessPieces/Enemies/EnemyPawn.gd" id="1_3r3xu"]
+[ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_de6fu"]
+
+[node name="EnemyPawn" type="Node2D"]
+script = ExtResource("1_3r3xu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_de6fu")
+hframes = 6

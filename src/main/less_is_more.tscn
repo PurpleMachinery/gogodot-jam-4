@@ -1,29 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5lvx2es56w00"]
+[gd_scene load_steps=11 format=3 uid="uid://dttlrcuiyj7in"]
 
 [ext_resource type="Script" path="res://src/main/less_is_more.gd" id="1_7wh4d"]
 [ext_resource type="PackedScene" uid="uid://rsoxmtvejvbp" path="res://src/main/Board/Board.tscn" id="1_m2et5"]
-[ext_resource type="PackedScene" uid="uid://bpclaqq0xjrc4" path="res://src/main/ChessPieces/Pawn.tscn" id="1_tn6ov"]
 [ext_resource type="Texture2D" uid="uid://ppt12j06ikxa" path="res://src/resources/character-frame.png" id="2_db654"]
 [ext_resource type="Texture2D" uid="uid://bnhu42ebgi4v7" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/dice_skull.png" id="2_uonyo"]
 [ext_resource type="PackedScene" uid="uid://cs5jnowgjxae8" path="res://src/main/ChessPieces/King.tscn" id="3_rtjws"]
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="3_vtpkl"]
-[ext_resource type="Script" path="res://src/main/KingHealth.gd" id="4_8ilr2"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_yv0s0"]
-font_size = 9
+[ext_resource type="Script" path="res://src/main/HUD/KingHealth.gd" id="4_xjt3v"]
+[ext_resource type="Texture2D" uid="uid://bvrjatttimgdc" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/suit_hearts.png" id="5_kbi31"]
+[ext_resource type="PackedScene" uid="uid://cpumn3tfdlrqp" path="res://src/main/ChessPieces/Enemies/EnemyPawn.tscn" id="9_qg1xo"]
 
 [sub_resource type="Curve2D" id="Curve2D_ivylx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -56, -56, 0, 0, 0, 0, -56, -40, 0, 0, 0, 0, 40, -40, 0, 0, 0, 0, 40, -8, 0, 0, 0, 0, -24, -8, 0, 0, 0, 0, -24, 24, 0, 0, 0, 0, 8, 24, 0, 0, 0, 0, 8, 40, 0, 0, 0, 0, 8, 56)
+"points": PackedVector2Array(0, 0, 0, 0, -56, -56, 0, 0, 0, 0, -56, -40, 0, 0, 0, 0, -40, -40, 0, 0, 0, 0, -24, -40, 0, 0, 0, 0, -8, -40, 0, 0, 0, 0, 8, -40, 0, 0, 0, 0, 24, -40, 0, 0, 0, 0, 40, -40, 0, 0, 0, 0, 40, -24, 0, 0, 0, 0, 40, -8, 0, 0, 0, 0, 24, -8, 0, 0, 0, 0, 8, -8, 0, 0, 0, 0, -8, -8, 0, 0, 0, 0, -24, -8, 0, 0, 0, 0, -24, 8, 0, 0, 0, 0, -24, 24, 0, 0, 0, 0, -8, 24, 0, 0, 0, 0, 8, 24, 0, 0, 0, 0, 8, 40, 0, 0, 0, 0, 8, 56)
 }
-point_count = 9
+point_count = 20
 
 [node name="LessIsMore" type="Node2D"]
 script = ExtResource("1_7wh4d")
 
-[node name="HUDHealth" type="Node2D" parent="."]
+[node name="HUDHealth" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ColorRect" type="ColorRect" parent="HUDHealth"]
+layout_mode = 0
 offset_left = -72.0
 offset_top = -72.0
 offset_right = -27.0
@@ -43,15 +44,22 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_db654")
 
 [node name="KingHealth" type="Label" parent="HUDHealth"]
-offset_left = -60.0
-offset_top = -40.0
-offset_right = -35.0
-offset_bottom = -24.0
-text = "20/20"
-label_settings = SubResource("LabelSettings_yv0s0")
-script = ExtResource("4_8ilr2")
+layout_mode = 0
+offset_left = -72.0
+offset_top = -41.0
+offset_right = -32.0
+offset_bottom = -15.0
+text = "20"
+horizontal_alignment = 1
+script = ExtResource("4_xjt3v")
+
+[node name="SuitHearts" type="Sprite2D" parent="HUDHealth"]
+position = Vector2(-38, -34)
+scale = Vector2(0.21875, 0.21875)
+texture = ExtResource("5_kbi31")
 
 [node name="ColorRect2" type="ColorRect" parent="HUDHealth"]
+layout_mode = 0
 offset_left = -28.0
 offset_top = -72.0
 offset_right = -27.0
@@ -83,16 +91,16 @@ texture = ExtResource("2_uonyo")
 visible = false
 curve = SubResource("Curve2D_ivylx")
 
+[node name="EnemyPieces" type="Node2D" parent="GameBoard"]
+modulate = Color(0.4, 0.4, 0.4, 1)
+
+[node name="EnemyPawn" parent="GameBoard/EnemyPieces" instance=ExtResource("9_qg1xo")]
+position = Vector2(-56, -56)
+
 [node name="PlayerPieces" type="Node2D" parent="GameBoard"]
 
 [node name="King" parent="GameBoard/PlayerPieces" instance=ExtResource("3_rtjws")]
 position = Vector2(8, 56)
-
-[node name="EnemyPieces" type="Node2D" parent="GameBoard"]
-modulate = Color(0.4, 0.4, 0.4, 1)
-
-[node name="Pawn" parent="GameBoard/EnemyPieces" instance=ExtResource("1_tn6ov")]
-position = Vector2(-56, -56)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(52, 0)
