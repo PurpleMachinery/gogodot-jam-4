@@ -29,10 +29,12 @@ func _process(_delta):
 
 
 func readNextPoint():
+	nextPoint = nextPoint + 1;
+
 	if(pathToFollow.point_count == nextPoint):
 		king.dealDamage(damage);
 		queue_free()
+		return
 
-	nextPoint = nextPoint + 1;
 	nextPosition = pathToFollow.get_point_position(nextPoint)
 	localTimer.start(1)
