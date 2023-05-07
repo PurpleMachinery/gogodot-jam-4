@@ -5,6 +5,7 @@ extends Node2D
 
 @export var health: int = 1
 @export var damage: int = 1
+@export var delayStartMove: int = 3
 
 @onready var nextPoint: int = 0
 @onready var nextPosition: Vector2 = pathToFollow.get_point_position(nextPoint)
@@ -15,7 +16,7 @@ var localTimer: Timer = Timer.new()
 func _ready():
 	localTimer.one_shot = true
 	add_child(localTimer)
-	localTimer.start(3)
+	localTimer.start(delayStartMove)
 
 
 func _process(_delta):

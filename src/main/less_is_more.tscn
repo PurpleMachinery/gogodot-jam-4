@@ -93,11 +93,21 @@ curve = SubResource("Curve2D_ivylx")
 
 [node name="EnemyPieces" type="Node2D" parent="GameBoard"]
 modulate = Color(0.4, 0.4, 0.4, 1)
+y_sort_enabled = true
 
 [node name="EnemyPawn" parent="GameBoard/EnemyPieces" instance=ExtResource("9_qg1xo")]
 position = Vector2(-56, -56)
 
+[node name="EnemyPawn2" parent="GameBoard/EnemyPieces" instance=ExtResource("9_qg1xo")]
+position = Vector2(-56, -56)
+delayStartMove = 4
+
+[node name="EnemyPawn3" parent="GameBoard/EnemyPieces" instance=ExtResource("9_qg1xo")]
+position = Vector2(-56, -56)
+delayStartMove = 6
+
 [node name="PlayerPieces" type="Node2D" parent="GameBoard"]
+y_sort_enabled = true
 
 [node name="King" parent="GameBoard/PlayerPieces" instance=ExtResource("3_rtjws")]
 position = Vector2(8, 56)
