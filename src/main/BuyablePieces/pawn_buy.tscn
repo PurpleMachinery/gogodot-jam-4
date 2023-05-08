@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://xc6rra3jrgy4"]
+
+[ext_resource type="Script" path="res://src/main/BuyablePieces/pawn_buy.gd" id="1_1ytyb"]
+[ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_b6mxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwf6m"]
+size = Vector2(12, 14)
+
+[node name="PawnBuy" type="CharacterBody2D"]
+collision_layer = 32768
+collision_mask = 32768
+input_pickable = true
+script = ExtResource("1_1ytyb")
+
+[node name="WhitePieces" type="Sprite2D" parent="."]
+texture = ExtResource("1_b6mxq")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_jwf6m")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
