@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 class_name Pawn
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
@@ -6,13 +6,21 @@ class_name Pawn
 @onready var rayCastLeft: RayCast2D = $RayCast2DLeft
 @onready var rayCastRight: RayCast2D = $RayCast2DRight
 
+@export var startMark: Node2D
 @export var damage: int = 1
-
-var tempCanPrint = false
 
 var attackTimer: Timer = Timer.new()
 
+var dragging: bool = false
+var rest_point: Vector2
+
+@export var canBeMoved: bool = true
+
+
 func _ready():
+	rest_point = startMark.get_node("FixPoint").global_position
+	startMark.get_node("FixPoint").select(self)
+
 	attackTimer.one_shot = true
 	add_child(attackTimer)
 
@@ -37,4 +45,25 @@ func _process(_delta):
 		firstEnemy.get_owner().dealDamage(damage)
 		sprite.modulate = Color(1, 0, 0, 1)
 		attackTimer.start(4)
-		tempCanPrint =true
+
+
+func _physics_process(delta):
+	if dragging:
+		var mousepos = get_global_mouse_position()
+		global_position = lerp(global_position, mousepos, 20 * delta)
+	else:
+		global_position = lerp(global_position, rest_point, 5 * delta)
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
+	if (canBeMoved && event is InputEventMouseButton):
+		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+			dragging = true
+		if (event.button_index == MOUSE_BUTTON_LEFT and !event.pressed):
+			dragging = false
+			var shortest_dist = 6
+			for child in get_tree().get_nodes_in_group("zone"):
+				var distance = global_position.distance_to(child.global_position)
+				if(child.canBeUsed && distance < shortest_dist):
+					child.select(self)
+					rest_point = child.global_position

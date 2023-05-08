@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpclaqq0xjrc4"]
+[gd_scene load_steps=9 format=3 uid="uid://bpclaqq0xjrc4"]
 
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_hkj3c"]
 [ext_resource type="Script" path="res://src/main/ChessPieces/Pawn.gd" id="1_skbha"]
@@ -97,7 +97,13 @@ _data = {
 "upgrade": SubResource("Animation_iyrhk")
 }
 
-[node name="Pawn" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0586"]
+radius = 6.0
+
+[node name="Pawn" type="CharacterBody2D"]
+collision_layer = 32768
+collision_mask = 32768
+input_pickable = true
 script = ExtResource("1_skbha")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -118,6 +124,13 @@ collide_with_areas = true
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 visible = false
-rotation = 3.92699
+rotation = -2.3562
 target_position = Vector2(-7.53403e-05, 22.6274)
 collide_with_areas = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_r0586")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
