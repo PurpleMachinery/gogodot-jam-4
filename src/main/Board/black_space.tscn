@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdl5htl8cv84m"]
+
+[ext_resource type="Texture2D" uid="uid://de4cvea3vs16n" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/d3_outline.png" id="1_3g3or"]
+
+[node name="BlackSpace" type="Node2D"]
+position = Vector2(-48, -64)
+metadata/_edit_group_ = true
+
+[node name="WhiteBlock" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_3g3or")
+centered = false
