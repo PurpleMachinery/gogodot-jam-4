@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dttlrcuiyj7in"]
+[gd_scene load_steps=12 format=3 uid="uid://dttlrcuiyj7in"]
 
 [ext_resource type="Script" path="res://src/main/less_is_more.gd" id="1_7wh4d"]
 [ext_resource type="PackedScene" uid="uid://rsoxmtvejvbp" path="res://src/main/Board/Board.tscn" id="1_m2et5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/main/HUD/KingHealth.gd" id="4_xjt3v"]
 [ext_resource type="Texture2D" uid="uid://bvrjatttimgdc" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/suit_hearts.png" id="5_kbi31"]
 [ext_resource type="PackedScene" uid="uid://cpumn3tfdlrqp" path="res://src/main/ChessPieces/Enemies/EnemyPawn.tscn" id="9_qg1xo"]
+[ext_resource type="PackedScene" uid="uid://bpclaqq0xjrc4" path="res://src/main/ChessPieces/Pawn.tscn" id="10_vunir"]
 
 [sub_resource type="Curve2D" id="Curve2D_ivylx"]
 _data = {
@@ -31,17 +32,26 @@ offset_right = -27.0
 offset_bottom = 72.0
 color = Color(0.670588, 0.372549, 0.721569, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="HUDHealth"]
-position = Vector2(-56, -56)
+[node name="CharacterFrame" type="ColorRect" parent="HUDHealth"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = -40.0
+offset_bottom = -40.0
+color = Color(0.968627, 0.92549, 0.976471, 1)
+
+[node name="CoverSprite" type="Sprite2D" parent="HUDHealth/CharacterFrame"]
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_db654")
+
+[node name="KingSprite" type="Sprite2D" parent="HUDHealth/CharacterFrame/CoverSprite"]
+position = Vector2(-16, -16)
+scale = Vector2(2, 2)
 texture = ExtResource("3_vtpkl")
 centered = false
 hframes = 6
 frame = 4
-
-[node name="Character-frame" type="Sprite2D" parent="HUDHealth"]
-position = Vector2(-48, -48)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_db654")
 
 [node name="KingHealth" type="Label" parent="HUDHealth"]
 layout_mode = 0
@@ -111,6 +121,9 @@ y_sort_enabled = true
 
 [node name="King" parent="GameBoard/PlayerPieces" instance=ExtResource("3_rtjws")]
 position = Vector2(8, 56)
+
+[node name="Pawn" parent="GameBoard" instance=ExtResource("10_vunir")]
+position = Vector2(-40, -24)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(52, 0)

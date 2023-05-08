@@ -1,4 +1,5 @@
 extends Node2D
+class_name EnemyPawn
 
 @onready var pathToFollow: Curve2D = get_node("../../EnemyPath/Path2D").get_curve()
 @onready var king = get_node("../../PlayerPieces/King")
@@ -12,6 +13,8 @@ extends Node2D
 
 var localTimer: Timer = Timer.new()
 
+var hasToDie: bool = false
+
 
 func _ready():
 	localTimer.one_shot = true
@@ -21,6 +24,8 @@ func _ready():
 
 func _process(_delta):
 	if(round(position) == nextPosition):
+		if(hasToDie):
+			queue_free()
 		if(localTimer.is_stopped()):
 			readNextPoint()
 	else:
@@ -40,3 +45,9 @@ func readNextPoint():
 
 	nextPosition = pathToFollow.get_point_position(nextPoint)
 	localTimer.start(1)
+
+func dealDamage(damageReceived):
+	health -= damageReceived
+
+	if(health <= 0):
+		hasToDie = true
