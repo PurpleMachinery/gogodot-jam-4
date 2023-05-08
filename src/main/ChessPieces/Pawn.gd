@@ -40,7 +40,7 @@ func _process(_delta):
 		enemyLeft = false
 		firstEnemy = rayCastRight.get_collider()
 	
-	if(attackTimer.is_stopped() && firstEnemy != null):
+	if(!dragging && attackTimer.is_stopped() && firstEnemy != null):
 		if(enemyLeft):
 			animationPlayer.play("attack_left")
 		else:
@@ -72,7 +72,3 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 					canBeMoved = false
 					child.select(self)
 					rest_point = child.global_position
-
-					# PRECISA MOVER PARA O GameBoard/PlayerPieces
-					#var targetLocation = get_node("../../../GameBoard/PlayerPieces")
-					#get_parent().move_child(self, targetLocation)
