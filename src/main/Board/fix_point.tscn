@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr4kcf35k5s17"]
+
+[ext_resource type="Script" path="res://src/main/Board/fix_point.gd" id="1_muhvu"]
+
+[node name="FixPoint" type="Marker2D" groups=["zone"]]
+position = Vector2(8, 8)
+rotation = 0.785398
+gizmo_extents = 4.0
+script = ExtResource("1_muhvu")
+
+[connection signal="draw" from="." to="." method="_on_draw"]

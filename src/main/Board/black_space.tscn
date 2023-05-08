@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdl5htl8cv84m"]
+[gd_scene load_steps=3 format=3 uid="uid://bdl5htl8cv84m"]
 
 [ext_resource type="Texture2D" uid="uid://de4cvea3vs16n" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/d3_outline.png" id="1_3g3or"]
+[ext_resource type="PackedScene" uid="uid://dr4kcf35k5s17" path="res://src/main/Board/fix_point.tscn" id="2_pf3pv"]
 
 [node name="BlackSpace" type="Node2D"]
 position = Vector2(-48, -64)
@@ -10,3 +11,5 @@ metadata/_edit_group_ = true
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_3g3or")
 centered = false
+
+[node name="FixPoint" parent="." instance=ExtResource("2_pf3pv")]
