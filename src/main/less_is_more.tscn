@@ -84,6 +84,7 @@ position = Vector2(40, 0)
 modulate = Color(0.670588, 0.372549, 0.721569, 1)
 
 [node name="EnemyPath" type="Node2D" parent="GameBoard"]
+visible = false
 
 [node name="Line2D" type="Line2D" parent="GameBoard/EnemyPath"]
 position = Vector2(-56, -64)
@@ -103,6 +104,7 @@ visible = false
 curve = SubResource("Curve2D_ivylx")
 
 [node name="EnemyPieces" type="Node2D" parent="GameBoard"]
+visible = false
 modulate = Color(0.4, 0.4, 0.4, 1)
 y_sort_enabled = true
 
@@ -118,6 +120,7 @@ position = Vector2(-56, -56)
 delayStartMove = 6
 
 [node name="PlayerPieces" type="Node2D" parent="GameBoard"]
+visible = false
 y_sort_enabled = true
 
 [node name="King" parent="GameBoard/PlayerPieces" instance=ExtResource("3_rtjws")]

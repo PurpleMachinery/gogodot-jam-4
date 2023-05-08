@@ -1,4 +1,5 @@
 extends Node
+class_name Microprofile
 
 @onready var microprofilePath = 'res://src/resources/META-INF/microprofile.properties';
 
