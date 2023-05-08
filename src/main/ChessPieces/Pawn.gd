@@ -6,7 +6,7 @@ class_name Pawn
 @onready var rayCastLeft: RayCast2D = $RayCast2DLeft
 @onready var rayCastRight: RayCast2D = $RayCast2DRight
 
-@export var startMark: Node2D
+@export var startSpace: Node2D
 @export var damage: int = 1
 
 var attackTimer: Timer = Timer.new()
@@ -14,12 +14,16 @@ var attackTimer: Timer = Timer.new()
 var dragging: bool = false
 var rest_point: Vector2
 
-@export var canBeMoved: bool = true
+@export var canBeMoved: bool = false
 
 
 func _ready():
-	rest_point = startMark.get_node("FixPoint").global_position
-	startMark.get_node("FixPoint").select(self)
+	if(startSpace is Marker2D):
+		rest_point = startSpace.global_position
+		startSpace.select(self)
+	elif(startSpace is Node2D):
+		rest_point = startSpace.get_node("FixPoint").global_position
+		startSpace.get_node("FixPoint").select(self)
 
 	attackTimer.one_shot = true
 	add_child(attackTimer)
@@ -65,5 +69,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 			for child in get_tree().get_nodes_in_group("zone"):
 				var distance = global_position.distance_to(child.global_position)
 				if(child.canBeUsed && distance < shortest_dist):
+					canBeMoved = false
 					child.select(self)
 					rest_point = child.global_position
+
+					# PRECISA MOVER PARA O GameBoard/PlayerPieces
+					#var targetLocation = get_node("../../../GameBoard/PlayerPieces")
+					#get_parent().move_child(self, targetLocation)
