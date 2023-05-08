@@ -13,3 +13,4 @@ texture = ExtResource("1_vijmn")
 centered = false
 
 [node name="FixPoint" parent="." instance=ExtResource("2_vkh3n")]
+visible = false
