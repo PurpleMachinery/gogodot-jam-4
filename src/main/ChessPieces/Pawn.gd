@@ -29,7 +29,7 @@ func _ready():
 	add_child(attackTimer)
 
 
-func _process(_delta):
+func _physics_process(delta):
 	var correctColor = lerp(sprite.modulate.g, 1.0, 0.0065)
 	sprite.modulate = Color(1, correctColor, correctColor, 1)
 
@@ -40,7 +40,7 @@ func _process(_delta):
 		enemyLeft = false
 		firstEnemy = rayCastRight.get_collider()
 	
-	if(!dragging && attackTimer.is_stopped() && firstEnemy != null):
+	if(!dragging && attackTimer.is_stopped() && firstEnemy != null && !firstEnemy.get_owner().hasToDie):
 		if(enemyLeft):
 			animationPlayer.play("attack_left")
 		else:
@@ -49,9 +49,6 @@ func _process(_delta):
 		firstEnemy.get_owner().dealDamage(damage)
 		sprite.modulate = Color(1, 0, 0, 1)
 		attackTimer.start(4)
-
-
-func _physics_process(delta):
 	if dragging:
 		var mousepos = get_global_mouse_position()
 		global_position = lerp(global_position, mousepos, 20 * delta)
