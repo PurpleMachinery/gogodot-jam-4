@@ -1,16 +1,17 @@
 extends Node2D
 class_name EnemyPawn
 
+@onready var root: LessIsMore = get_tree().get_current_scene()
 @onready var pathToFollow: Curve2D = get_node("../../EnemyPath/Path2D").get_curve()
 @onready var king = get_node("../../PlayerPieces/King")
 
 @onready var nextPoint: int = 0
 @onready var nextPosition: Vector2 = pathToFollow.get_point_position(nextPoint)
 
-@export_group("Pawn Status")
 @export var health: int = 1
 @export var damage: int = 1
 @export var delayStartMove: int = 3
+@export var coinsReward: int = 2
 
 var localTimer: Timer = Timer.new()
 
@@ -52,4 +53,6 @@ func dealDamage(damageReceived):
 	health -= damageReceived
 
 	if(health <= 0):
+		root.playerCoins += coinsReward
 		hasToDie = true
+		return

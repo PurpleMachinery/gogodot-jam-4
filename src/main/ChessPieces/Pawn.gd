@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Pawn
 
+@onready var root: LessIsMore = get_tree().get_current_scene()
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var rayCastLeft: RayCast2D = $RayCast2DLeft
@@ -9,11 +10,9 @@ class_name Pawn
 @export var canBeMoved: bool = false
 @export var startSpace: Node2D
 
-@export_group("Pawn Status")
-@export var damage: int = 1
-
-
 var attackTimer: Timer = Timer.new()
+var damage: int = 1
+var price: int = 3
 
 var dragging: bool = false
 var rest_point: Vector2
@@ -59,7 +58,7 @@ func _physics_process(delta):
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
-	if (canBeMoved && event is InputEventMouseButton):
+	if (root.canBuyPiece(price) && canBeMoved && event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 			dragging = true
 		if (event.button_index == MOUSE_BUTTON_LEFT and !event.pressed):
@@ -68,9 +67,11 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 			for child in get_tree().get_nodes_in_group("zone"):
 				var distance = global_position.distance_to(child.global_position)
 				if(child.canBeUsed && distance < shortest_dist):
+					root.buyPiece(price)
 					#deixar nessa ordem funciona... não sei porque, não devia...
 					fixatePosition(child)
 					createSubstitute(self)
+					#deixar nessa ordem funciona... não sei porque, não devia...
 
 
 func fixatePosition(child: Marker2D):
