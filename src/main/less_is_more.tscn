@@ -163,18 +163,18 @@ position = Vector2(8, 56)
 
 [node name="Pawn" parent="GameBoard/PlayerPieces" node_paths=PackedStringArray("startSpace") instance=ExtResource("10_vunir")]
 position = Vector2(88, -56)
-startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint")
 canBeMoved = true
+startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint")
 
 [node name="Pawn2" parent="GameBoard/PlayerPieces" node_paths=PackedStringArray("startSpace") instance=ExtResource("10_vunir")]
 position = Vector2(104, -56)
-startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint2")
 canBeMoved = true
+startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint2")
 
 [node name="Pawn3" parent="GameBoard/PlayerPieces" node_paths=PackedStringArray("startSpace") instance=ExtResource("10_vunir")]
 position = Vector2(120, -56)
-startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint3")
 canBeMoved = true
+startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(52, 0)

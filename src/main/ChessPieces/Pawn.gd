@@ -6,15 +6,17 @@ class_name Pawn
 @onready var rayCastLeft: RayCast2D = $RayCast2DLeft
 @onready var rayCastRight: RayCast2D = $RayCast2DRight
 
+@export var canBeMoved: bool = false
 @export var startSpace: Node2D
+
+@export_group("Pawn Status")
 @export var damage: int = 1
+
 
 var attackTimer: Timer = Timer.new()
 
 var dragging: bool = false
 var rest_point: Vector2
-
-@export var canBeMoved: bool = false
 
 
 func _ready():

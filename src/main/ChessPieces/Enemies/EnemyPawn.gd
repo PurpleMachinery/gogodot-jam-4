@@ -4,12 +4,13 @@ class_name EnemyPawn
 @onready var pathToFollow: Curve2D = get_node("../../EnemyPath/Path2D").get_curve()
 @onready var king = get_node("../../PlayerPieces/King")
 
+@onready var nextPoint: int = 0
+@onready var nextPosition: Vector2 = pathToFollow.get_point_position(nextPoint)
+
+@export_group("Pawn Status")
 @export var health: int = 1
 @export var damage: int = 1
 @export var delayStartMove: int = 3
-
-@onready var nextPoint: int = 0
-@onready var nextPosition: Vector2 = pathToFollow.get_point_position(nextPoint)
 
 var localTimer: Timer = Timer.new()
 
@@ -45,6 +46,7 @@ func readNextPoint():
 
 	nextPosition = pathToFollow.get_point_position(nextPoint)
 	localTimer.start(1)
+
 
 func dealDamage(damageReceived):
 	health -= damageReceived
