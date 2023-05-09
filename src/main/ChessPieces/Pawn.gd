@@ -69,6 +69,21 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 			for child in get_tree().get_nodes_in_group("zone"):
 				var distance = global_position.distance_to(child.global_position)
 				if(child.canBeUsed && distance < shortest_dist):
-					canBeMoved = false
-					child.select(self)
-					rest_point = child.global_position
+					createSubstitute(self)
+					fixatePosition(child)
+
+
+func fixatePosition(child: Marker2D):
+	canBeMoved = false
+	child.select(self)
+	rest_point = child.global_position
+
+
+func createSubstitute(oldPawn: Pawn):
+	var newPawn = load("res://src/main/ChessPieces/Pawn.tscn").instantiate()
+	oldPawn.get_parent().add_child(newPawn)
+
+	newPawn.startSpace = oldPawn.startSpace
+	newPawn.rest_point = oldPawn.rest_point
+	newPawn.global_position = oldPawn.rest_point - Vector2(-100, 0)
+	newPawn.canBeMoved = true
