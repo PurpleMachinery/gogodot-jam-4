@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dttlrcuiyj7in"]
+[gd_scene load_steps=16 format=3 uid="uid://dttlrcuiyj7in"]
 
 [ext_resource type="Script" path="res://src/main/less_is_more.gd" id="1_7wh4d"]
 [ext_resource type="PackedScene" uid="uid://rsoxmtvejvbp" path="res://src/main/Board/Board.tscn" id="1_m2et5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bnhu42ebgi4v7" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/dice_skull.png" id="2_uonyo"]
 [ext_resource type="PackedScene" uid="uid://cs5jnowgjxae8" path="res://src/main/ChessPieces/King.tscn" id="3_rtjws"]
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="3_vtpkl"]
+[ext_resource type="FontFile" uid="uid://8flh8g8xhvtv" path="res://src/resources/vcr_osd_mono/VCR_OSD_MONO_1.001.ttf" id="4_eunph"]
 [ext_resource type="Script" path="res://src/main/HUD/KingHealth.gd" id="4_xjt3v"]
 [ext_resource type="Texture2D" uid="uid://bvrjatttimgdc" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/suit_hearts.png" id="5_kbi31"]
 [ext_resource type="Script" path="res://src/main/Coins.gd" id="6_sqwh8"]
@@ -57,24 +58,30 @@ hframes = 6
 frame = 4
 
 [node name="KingHealth" type="Label" parent="HUD"]
+texture_filter = 1
 layout_mode = 0
 offset_left = -64.0
-offset_top = -40.0
-offset_right = -24.0
+offset_top = -32.0
+offset_right = -48.0
 offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("4_eunph")
+theme_override_font_sizes/font_size = 12
 text = "XX"
 script = ExtResource("4_xjt3v")
 
 [node name="SuitHearts" type="Sprite2D" parent="HUD"]
-position = Vector2(-37, -28)
-scale = Vector2(0.21875, 0.21875)
+position = Vector2(-44, -26)
+scale = Vector2(0.14, 0.14)
 texture = ExtResource("5_kbi31")
 
 [node name="Coins" type="Label" parent="HUD"]
+layout_mode = 0
 offset_left = -64.0
-offset_top = -24.0
-offset_right = -24.0
-offset_bottom = 2.0
+offset_top = -20.0
+offset_right = -48.0
+offset_bottom = -4.0
+theme_override_fonts/font = ExtResource("4_eunph")
+theme_override_font_sizes/font_size = 12
 text = "XX"
 script = ExtResource("6_sqwh8")
 
@@ -190,8 +197,8 @@ position = Vector2(52, 0)
 zoom = Vector2(4.8, 4.8)
 
 [node name="D2" type="Sprite2D" parent="."]
-position = Vector2(-37, -13)
-scale = Vector2(0.219, 0.219)
+position = Vector2(-44, -14)
+scale = Vector2(0.14, 0.14)
 texture = ExtResource("12_ucgsf")
 
 [editable path="GameBoard/Board"]
