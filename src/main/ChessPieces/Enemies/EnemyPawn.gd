@@ -10,15 +10,16 @@ class_name EnemyPawn
 
 @export var health: int = 1
 @export var damage: int = 1
-@export var delayStartMove: int = 3
+@export var delayStartMove: float = 3
 @export var coinsReward: int = 2
+@export var stepDelay: float = 1
 
 var localTimer: Timer = Timer.new()
-
 var hasToDie: bool = false
 
 
 func _ready():
+	position = pathToFollow.get_point_position(0)
 	localTimer.one_shot = true
 	add_child(localTimer)
 	localTimer.start(delayStartMove)
@@ -32,13 +33,13 @@ func _process(_delta):
 			readNextPoint()
 	else:
 		var tween: Tween = create_tween()
-		tween.tween_property(self, "position", nextPosition, 0.4)
+		tween.tween_property(self, "position", nextPosition, 0.4 * stepDelay)
 		await tween.finished
 		tween.kill()
 
 
 func readNextPoint():
-	nextPoint = nextPoint + 1;
+	nextPoint += 1;
 
 	if(pathToFollow.point_count == nextPoint):
 		king.dealDamage(damage);
@@ -46,7 +47,7 @@ func readNextPoint():
 		return
 
 	nextPosition = pathToFollow.get_point_position(nextPoint)
-	localTimer.start(1)
+	localTimer.start(stepDelay)
 
 
 func dealDamage(damageReceived):
