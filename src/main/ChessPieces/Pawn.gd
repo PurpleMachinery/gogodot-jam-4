@@ -41,7 +41,7 @@ func _physics_process(delta):
 		enemyLeft = false
 		firstEnemy = rayCastRight.get_collider()
 	
-	if(!dragging && attackTimer.is_stopped() && firstEnemy != null && !firstEnemy.get_owner().hasToDie):
+	if(!dragging && !canBeMoved && attackTimer.is_stopped() && firstEnemy != null && !firstEnemy.get_owner().hasToDie):
 		if(enemyLeft):
 			animationPlayer.play("attack_left")
 		else:
