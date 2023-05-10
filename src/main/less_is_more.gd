@@ -11,7 +11,6 @@ var canCallNextWave: bool
 
 func _process(_delta):
 	canCallNextWave = enemyPieces.get_child_count() == 0
-	print(canCallNextWave)
 	if(Input.is_action_just_pressed("ui_cancel")):
 		get_tree().quit()
 
