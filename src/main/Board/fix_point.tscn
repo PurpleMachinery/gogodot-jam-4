@@ -14,7 +14,7 @@ gizmo_extents = 4.0
 script = ExtResource("1_muhvu")
 
 [node name="ChessPawn" type="Sprite2D" parent="."]
-modulate = Color(0.376471, 0.168627, 0.419608, 1)
+modulate = Color(0.901961, 0.698039, 0.286275, 1)
 material = SubResource("ShaderMaterial_vq64v")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_eg2e3")
