@@ -6,11 +6,6 @@ class_name FixPoint
 var currentPawn = null
 
 
-func _on_draw():
-	# draw_circle(Vector2.ZERO, 5, Color.BLANCHED_ALMOND)
-	pass
-
-
 func select(pawn):
 	if(canBeUsed):
 		canBeUsed = false
