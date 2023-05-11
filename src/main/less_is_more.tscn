@@ -149,6 +149,63 @@ position = Vector2(40, 0)
 modulate = Color(0.886275, 0.14902, 0.360784, 1)
 metadata/_edit_group_ = true
 
+[node name="FixPoint" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-56, -24)
+
+[node name="FixPoint2" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-40, -24)
+
+[node name="FixPoint3" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-24, -24)
+
+[node name="FixPoint4" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-8, -24)
+
+[node name="FixPoint5" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(8, -24)
+
+[node name="FixPoint6" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(24, -24)
+
+[node name="FixPoint7" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-8, 8)
+
+[node name="FixPoint8" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(8, 8)
+
+[node name="FixPoint9" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(24, 8)
+
+[node name="FixPoint10" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(40, 8)
+
+[node name="FixPoint11" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(56, 8)
+
+[node name="FixPoint12" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(56, -8)
+
+[node name="FixPoint13" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(56, -24)
+
+[node name="FixPoint14" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-40, 40)
+
+[node name="FixPoint15" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-40, 24)
+
+[node name="FixPoint16" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-40, 8)
+
+[node name="FixPoint17" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-24, 40)
+
+[node name="FixPoint18" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(-8, 40)
+
+[node name="FixPoint19" parent="GameBoard/Board" instance=ExtResource("11_my84o")]
+position = Vector2(24, 40)
+
 [node name="EnemyPath" type="Node2D" parent="GameBoard"]
 
 [node name="Line2D" type="Line2D" parent="GameBoard/EnemyPath"]
@@ -204,5 +261,3 @@ scale = Vector2(0.14, 0.14)
 texture = ExtResource("12_ucgsf")
 
 [connection signal="pressed" from="HUD/Button" to="HUD/Button" method="_on_pressed"]
-
-[editable path="GameBoard/Board"]
