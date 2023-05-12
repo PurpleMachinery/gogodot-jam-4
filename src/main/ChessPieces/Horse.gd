@@ -48,7 +48,7 @@ func _physics_process(delta):
 	if(!dragging && !canBeMoved && attackTimer.is_stopped() && firstEnemy != null && !firstEnemy.get_owner().hasToDie):
 		
 		var anim: Animation = animationPlayer.get_animation("attack")
-		var track_id: int = anim.find_track("Sprite2D:position", 0)
+		var track_id: int = anim.find_track("Sprite2D:position", Animation.TYPE_VALUE)
 		var key_id: int = anim.track_find_key(track_id, 0.2)
 		anim.track_set_key_value(track_id, key_id, to_local(firstEnemy.global_position))
 		animationPlayer.play("attack")
