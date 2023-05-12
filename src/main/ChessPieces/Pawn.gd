@@ -34,6 +34,9 @@ func _physics_process(delta):
 	var correctColor = lerp(sprite.modulate.g, 1.0, 0.0065)
 	sprite.modulate = Color(1, correctColor, correctColor, 1)
 
+	rayCastLeft.visible = dragging
+	rayCastRight.visible = dragging
+
 	var enemyLeft: bool = true
 	var firstEnemy = rayCastLeft.get_collider()
 
