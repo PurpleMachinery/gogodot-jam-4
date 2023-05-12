@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlxwr7uet7u3p"]
+[gd_scene load_steps=6 format=3 uid="uid://dlxwr7uet7u3p"]
 
 [ext_resource type="Script" path="res://src/main/ChessPieces/Horse.gd" id="1_13toi"]
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_u23wg"]
@@ -39,15 +39,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehwlv"]
 radius = 6.0
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pskjc"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 2.0
-color = Color(0.615686, 0.639216, 1, 0.584314)
-
 [node name="Horse" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_13toi")
@@ -68,115 +59,59 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ehwlv")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-24, -8)
 rotation = 2.35619
 target_position = Vector2(-5.05447e-05, 11.3137)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D"]
-position = Vector2(-5.05447e-05, 11.3137)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D2" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-8, -24)
 rotation = 2.35619
 target_position = Vector2(-5.05447e-05, 11.3137)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D2"]
-position = Vector2(-5.05447e-05, 11.3137)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D3" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(8, -24)
 rotation = 2.35619
 target_position = Vector2(-11.3137, -5.05447e-05)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D3"]
-position = Vector2(-11.3137, -5.14984e-05)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D4" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(24, -8)
 rotation = 2.35619
 target_position = Vector2(-11.3137, -5.05447e-05)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D4"]
-position = Vector2(-11.3137, -5.19753e-05)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D5" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-24, 8)
 rotation = 2.35619
 target_position = Vector2(11.3137, 5.05447e-05)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D5"]
-position = Vector2(11.3137, 5.14984e-05)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D6" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-8, 24)
 rotation = 2.35619
 target_position = Vector2(11.3137, 5.05447e-05)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D6"]
-position = Vector2(11.3137, 5.14984e-05)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D7" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(8, 24)
 rotation = 2.35619
 target_position = Vector2(5.05447e-05, -11.3137)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D7"]
-position = Vector2(5.05447e-05, -11.3137)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2D8" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(24, 8)
 rotation = 2.35619
 target_position = Vector2(5.05447e-05, -11.3137)
 collide_with_areas = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2D8"]
-position = Vector2(5.05447e-05, -11.3137)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_pskjc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

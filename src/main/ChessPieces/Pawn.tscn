@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpclaqq0xjrc4"]
+[gd_scene load_steps=9 format=3 uid="uid://bpclaqq0xjrc4"]
 
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_hkj3c"]
 [ext_resource type="Script" path="res://src/main/ChessPieces/Pawn.gd" id="1_skbha"]
@@ -97,15 +97,6 @@ _data = {
 "upgrade": SubResource("Animation_iyrhk")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6bvc"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 2.0
-color = Color(0.615686, 0.639216, 1, 0.584314)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0586"]
 radius = 6.0
 
@@ -126,30 +117,16 @@ texture = ExtResource("1_hkj3c")
 hframes = 6
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
+visible = false
 rotation = 2.35619
 target_position = Vector2(-7.53403e-05, 22.6274)
 collide_with_areas = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2DLeft"]
-position = Vector2(-0.000102997, 22.6274)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_b6bvc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
-
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
+visible = false
 rotation = -2.3562
 target_position = Vector2(-7.53403e-05, 22.6274)
 collide_with_areas = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="RayCast2DRight"]
-position = Vector2(-0.000123978, 22.6274)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_b6bvc")
-lifetime = 0.2
-visibility_rect = Rect2(0, 0, 0, 0)
-trail_lifetime = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
