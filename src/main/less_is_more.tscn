@@ -88,6 +88,11 @@ theme_override_font_sizes/font_size = 12
 text = "XX"
 script = ExtResource("6_sqwh8")
 
+[node name="D2" type="Sprite2D" parent="HUD"]
+position = Vector2(-44, -14)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("12_ucgsf")
+
 [node name="ColorRect2" type="ColorRect" parent="HUD"]
 layout_mode = 0
 offset_left = -28.0
@@ -246,10 +251,5 @@ startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint2")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(52, 0)
 zoom = Vector2(4.8, 4.8)
-
-[node name="D2" type="Sprite2D" parent="."]
-position = Vector2(-44, -14)
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("12_ucgsf")
 
 [connection signal="pressed" from="HUD/Button" to="HUD/Button" method="_on_pressed"]
