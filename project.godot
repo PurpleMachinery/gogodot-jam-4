@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gogodot-jam-4"
-run/main_scene="res://src/main/less_is_more.tscn"
+run/main_scene="res://src/main/menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
