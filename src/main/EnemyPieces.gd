@@ -4,7 +4,7 @@ class_name EnemyPieces
 
 var enemyPawn = preload("res://src/main/ChessPieces/Enemies/EnemyPawn.tscn")
 
-var currentRound = 5
+var currentRound = 0
 var pawnsPerRound = [
 	[newPawn([1, 1, 2, 1, 1]), newPawn([1, 1, 6, 1, 1])],
 	[newPawn([1, 1, 2, 1, 1]), newPawn([1, 1, 3, 1, 1])],
@@ -18,7 +18,7 @@ var pawnsPerRound = [
 		newPawn([1, 1, 14, 1, 1]), newPawn([1, 1, 15, 1, 1]), newPawn([1, 1, 16, 1, 1]), newPawn([1, 1, 17, 1, 1]), newPawn([1, 1, 18, 1, 1]), newPawn([1, 1, 19, 1, 1]),
 		newPawn([1, 1, 20, 1, 1]), newPawn([1, 1, 21, 1, 1]), newPawn([1, 1, 22, 1, 1]), newPawn([1, 1, 23, 1, 1]), newPawn([1, 1, 24, 1, 1]), newPawn([1, 1, 25, 1, 1])],
 	
-	[newPawn([100, 20, 3, 1, 1])]
+	[newPawn([100, 20, 3, 1, 0.1])]
 ]
 
 
