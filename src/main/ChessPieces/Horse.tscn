@@ -40,6 +40,8 @@ _data = {
 radius = 6.0
 
 [node name="Horse" type="CharacterBody2D"]
+collision_layer = 32768
+collision_mask = 32768
 input_pickable = true
 script = ExtResource("1_13toi")
 
