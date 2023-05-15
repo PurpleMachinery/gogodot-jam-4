@@ -18,7 +18,7 @@ var pawnsPerRound = [
 		newPawn([1, 1, 14, 1, 1]), newPawn([1, 1, 15, 1, 1]), newPawn([1, 1, 16, 1, 1]), newPawn([1, 1, 17, 1, 1]), newPawn([1, 1, 18, 1, 1]), newPawn([1, 1, 19, 1, 1]),
 		newPawn([1, 1, 20, 1, 1]), newPawn([1, 1, 21, 1, 1]), newPawn([1, 1, 22, 1, 1]), newPawn([1, 1, 23, 1, 1]), newPawn([1, 1, 24, 1, 1]), newPawn([1, 1, 25, 1, 1])],
 	
-	[newPawn([100, 20, 3, 1, 0.1])]
+	[newPawn([25, 20, 1, 1, 0.1]).turnBoss()]
 ]
 
 
@@ -36,9 +36,5 @@ func newPawn(pawnData) -> EnemyPawn:
 	pawn.delayStartMove = pawnData[2]
 	pawn.stepDelay = pawnData[3]
 	pawn.coinsReward = pawnData[4]
-	
-	if(pawn.health == 100):
-		pawn.modulate = Color.RED
-		pawn.scale = Vector2(1.3, 1.3)
 
 	return pawn

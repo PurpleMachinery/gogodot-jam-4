@@ -16,6 +16,7 @@ class_name EnemyPawn
 
 var localTimer: Timer = Timer.new()
 var hasToDie: bool = false
+var isLastBoss: bool = false
 
 
 func _ready():
@@ -28,6 +29,10 @@ func _ready():
 func _process(_delta):
 	if(round(position) == nextPosition):
 		if(hasToDie):
+			if(modulate == Color.RED):
+				await get_tree().create_timer(2).timeout
+				get_tree().change_scene_to_file("res://src/main/win.tscn")
+
 			queue_free()
 		if(localTimer.is_stopped()):
 			readNextPoint()
@@ -57,3 +62,9 @@ func dealDamage(damageReceived):
 		root.playerCoins += coinsReward
 		hasToDie = true
 		return
+
+
+func turnBoss():
+	modulate = Color.RED
+	scale = Vector2(1.3, 1.3)
+	return self
