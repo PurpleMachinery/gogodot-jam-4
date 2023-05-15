@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs5jnowgjxae8"]
+[gd_scene load_steps=6 format=3 uid="uid://cs5jnowgjxae8"]
 
 [ext_resource type="Script" path="res://src/main/ChessPieces/King.gd" id="1_4iy6q"]
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_f2xlb"]
+[ext_resource type="AudioStream" uid="uid://dsbeb4wtesohv" path="res://src/resources/audio/35213__abyssmal__slashkut.wav" id="3_k3aqe"]
+[ext_resource type="AudioStream" uid="uid://cb4r843exc1fn" path="res://src/resources/audio/646974__huw2k8__yourtimehascome.wav" id="4_eld33"]
+[ext_resource type="AudioStream" uid="uid://bwumx5otgceas" path="res://src/resources/audio/571387__alexmurphy53__villain-death.wav" id="5_vro1o"]
 
 [node name="King" type="Node2D"]
 script = ExtResource("1_4iy6q")
@@ -10,3 +13,12 @@ script = ExtResource("1_4iy6q")
 texture = ExtResource("1_f2xlb")
 hframes = 6
 frame = 4
+
+[node name="AudioStreamPlayer_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k3aqe")
+
+[node name="AudioStreamPlayer_before_die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eld33")
+
+[node name="AudioStreamPlayer_after_die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vro1o")
