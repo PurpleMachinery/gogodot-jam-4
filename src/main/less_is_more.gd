@@ -3,6 +3,7 @@ class_name LessIsMore
 
 
 @onready var enemyPieces: EnemyPieces = get_node("GameBoard/EnemyPieces")
+@onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer_placed
 
 @export var playerCoins: int = 3
 
@@ -22,4 +23,5 @@ func canBuyPiece(price) -> bool:
 
 
 func buyPiece(price: int) -> void:
+	audioPlayer.play()
 	playerCoins -= price
