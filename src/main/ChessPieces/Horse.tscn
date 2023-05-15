@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlxwr7uet7u3p"]
+[gd_scene load_steps=7 format=3 uid="uid://dlxwr7uet7u3p"]
 
 [ext_resource type="Script" path="res://src/main/ChessPieces/Horse.gd" id="1_13toi"]
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_u23wg"]
+[ext_resource type="PackedScene" uid="uid://b6gm2sngt87x2" path="res://src/main/HUD/status.tscn" id="3_cr566"]
 
 [sub_resource type="Animation" id="Animation_j7okf"]
 resource_name = "attack"
@@ -116,4 +117,12 @@ rotation = 2.35619
 target_position = Vector2(5.05447e-05, -11.3137)
 collide_with_areas = true
 
+[node name="Panel" parent="." instance=ExtResource("3_cr566")]
+visible = false
+offset_left = -24.0
+offset_right = 8.0
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_mouse_entered"]

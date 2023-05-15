@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpclaqq0xjrc4"]
+[gd_scene load_steps=10 format=3 uid="uid://bpclaqq0xjrc4"]
 
 [ext_resource type="Texture2D" uid="uid://bsrf7o0h6kbq3" path="res://src/resources/pixel chess_v1.2/16x16 pieces/WhitePieces.png" id="1_hkj3c"]
 [ext_resource type="Script" path="res://src/main/ChessPieces/Pawn.gd" id="1_skbha"]
+[ext_resource type="PackedScene" uid="uid://b6gm2sngt87x2" path="res://src/main/HUD/status.tscn" id="3_xx7d4"]
 
 [sub_resource type="Animation" id="Animation_ftexs"]
 resource_name = "attack_left"
@@ -133,4 +134,10 @@ visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_r0586")
 
+[node name="Panel" parent="." instance=ExtResource("3_xx7d4")]
+visible = false
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_mouse_entered"]

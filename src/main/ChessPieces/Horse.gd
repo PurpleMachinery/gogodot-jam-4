@@ -4,6 +4,8 @@ class_name Horse
 @onready var root: LessIsMore = get_tree().get_current_scene()
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var panel: Panel = $Panel
+@onready var textLabel: Label = $Panel/Label
 
 var listRayCast: Array[RayCast2D] = []
 
@@ -13,6 +15,7 @@ var listRayCast: Array[RayCast2D] = []
 var attackTimer: Timer = Timer.new()
 var damage: int = 3
 var price: int = 7
+var attackDelay: float = 2.5
 
 var dragging: bool = false
 var rest_point: Vector2
@@ -22,6 +25,8 @@ func _ready():
 	for child in get_children():
 		if(child is RayCast2D):
 			listRayCast.append(child)
+
+	textLabel.text = "Damage: ${1}\nDelay: ${2} sec".replace("${1}", str(damage)).replace("${2}", str(attackDelay))
 
 	if(startSpace is Marker2D):
 		rest_point = startSpace.global_position
@@ -35,7 +40,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	var correctColor = lerp(sprite.modulate.g, 1.0, 0.0065)
+	var correctColor = lerp(sprite.modulate.g, 1.0, 0.01)
 	sprite.modulate = Color(1, correctColor, correctColor, 1)
 
 
@@ -66,6 +71,7 @@ func _physics_process(delta):
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if (root.canBuyPiece(price) && canBeMoved && event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+			_on_mouse_exited()
 			dragging = true
 		if (event.button_index == MOUSE_BUTTON_LEFT and !event.pressed):
 			dragging = false
@@ -95,3 +101,11 @@ func createSubstitute(oldPawn: Horse):
 	newPawn.canBeMoved = true
 
 	oldPawn.get_parent().add_child(newPawn)
+
+
+func _on_mouse_entered():
+	panel.show()
+
+
+func _on_mouse_exited():
+	panel.hide()

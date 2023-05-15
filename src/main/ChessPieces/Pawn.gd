@@ -6,6 +6,8 @@ class_name Pawn
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var rayCastLeft: RayCast2D = $RayCast2DLeft
 @onready var rayCastRight: RayCast2D = $RayCast2DRight
+@onready var panel: Panel = $Panel
+@onready var textLabel: Label = $Panel/Label
 
 @export var canBeMoved: bool = false
 @export var startSpace: Node2D
@@ -13,6 +15,7 @@ class_name Pawn
 var attackTimer: Timer = Timer.new()
 var damage: int = 1
 var price: int = 3
+var attackDelay: float = 4
 
 var dragging: bool = false
 var rest_point: Vector2
@@ -25,6 +28,8 @@ func _ready():
 	elif(startSpace is Node2D):
 		rest_point = startSpace.get_node("FixPoint").global_position
 		startSpace.get_node("FixPoint").select(self)
+	
+	textLabel.text = "Damage: ${1}\nDelay: ${2} sec".replace("${1}", str(damage)).replace("${2}", str(attackDelay))
 
 	attackTimer.one_shot = true
 	add_child(attackTimer)
@@ -52,7 +57,7 @@ func _physics_process(delta):
 
 		firstEnemy.get_owner().dealDamage(damage)
 		sprite.modulate = Color(1, 0, 0, 1)
-		attackTimer.start(4)
+		attackTimer.start(attackDelay)
 	if dragging:
 		var mousepos = get_global_mouse_position()
 		global_position = lerp(global_position, mousepos, 20 * delta)
@@ -63,6 +68,7 @@ func _physics_process(delta):
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if (root.canBuyPiece(price) && canBeMoved && event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+			_on_mouse_exited()
 			dragging = true
 		if (event.button_index == MOUSE_BUTTON_LEFT and !event.pressed):
 			dragging = false
@@ -92,3 +98,11 @@ func createSubstitute(oldPawn: Pawn):
 	newPawn.canBeMoved = true
 
 	oldPawn.get_parent().add_child(newPawn)
+
+
+func _on_mouse_entered():
+	panel.show()
+
+
+func _on_mouse_exited():
+	panel.hide()
