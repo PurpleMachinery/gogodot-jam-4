@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dttlrcuiyj7in"]
+[gd_scene load_steps=20 format=3 uid="uid://dttlrcuiyj7in"]
 
 [ext_resource type="Script" path="res://src/main/less_is_more.gd" id="1_7wh4d"]
 [ext_resource type="PackedScene" uid="uid://rsoxmtvejvbp" path="res://src/main/Board/Board.tscn" id="1_m2et5"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dr4kcf35k5s17" path="res://src/main/Board/fix_point.tscn" id="11_my84o"]
 [ext_resource type="Texture2D" uid="uid://beh3mqxepcs1x" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/d2.png" id="12_ucgsf"]
 [ext_resource type="PackedScene" uid="uid://dlxwr7uet7u3p" path="res://src/main/ChessPieces/Horse.tscn" id="15_8af75"]
+[ext_resource type="Texture2D" uid="uid://75664bspvpas" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/tag_3.png" id="16_i5ngc"]
+[ext_resource type="Texture2D" uid="uid://c1jgq17j5hhng" path="res://src/resources/kenney_board-game-icons/PNG/Default (64px)/tag_7.png" id="18_qbdqe"]
 
 [sub_resource type="Curve2D" id="Curve2D_ivylx"]
 _data = {
@@ -140,9 +142,11 @@ color = Color(0.439216, 0.207843, 0.478431, 1)
 [node name="Pieces" type="Node2D" parent="ShopPieces"]
 
 [node name="FixPoint" parent="ShopPieces/Pieces" instance=ExtResource("11_my84o")]
+visible = false
 position = Vector2(144, -56)
 
 [node name="FixPoint2" parent="ShopPieces/Pieces" instance=ExtResource("11_my84o")]
+visible = false
 position = Vector2(160, -56)
 
 [node name="GameBoard" type="Node2D" parent="."]
@@ -246,6 +250,20 @@ startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint")
 position = Vector2(120, -56)
 canBeMoved = true
 startSpace = NodePath("../../../ShopPieces/Pieces/FixPoint2")
+
+[node name="Tag7" type="Sprite2D" parent="."]
+modulate = Color(1, 0.8, 0, 1)
+position = Vector2(160, -56)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("18_qbdqe")
+offset = Vector2(3, 3)
+
+[node name="Tag3" type="Sprite2D" parent="."]
+modulate = Color(1, 0.8, 0, 1)
+position = Vector2(144, -56)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("16_i5ngc")
+offset = Vector2(3, 3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(52, 0)
